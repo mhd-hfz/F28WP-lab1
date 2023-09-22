@@ -3,13 +3,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    color: #505050;
+    color: #25b31d;
 }
 
 /* Header Styles */
 header {
-    background-color: #282689;
-    color: #fff;
+    background-color: #000000;
+    color: #ff0000;
     text-align: center;
     padding: 20px;
 }
@@ -46,7 +46,7 @@ nav li {
 
 nav a {
     display: block;
-    color: #fff;
+    color: #0ec6e1;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -83,7 +83,8 @@ main {
 .services {
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #fff;
+    background-color: #a10c0c;
+    background-image: linear-gradient(to bottom, #403737 , #32b0dc);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
