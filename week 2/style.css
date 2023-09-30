@@ -48,6 +48,7 @@ nav li {
 nav a {
     display: block;
     font-weight: bold;
+    font-size: 1.2em;
     color: #000000;
     text-align: center;
     padding: 14px 30px;
