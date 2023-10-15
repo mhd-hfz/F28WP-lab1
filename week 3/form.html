@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration Form</title>
+     <link rel="stylesheet" href="form.css">
+</head> 
+<body>
+    <h1>User Registration Form</h1>
+    <form id="registrationForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <div class="error" id="usernameError"></div>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <div class="error" id="emailError"></div>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <div class="error" id="passwordError"></div>
+        </div>
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <div class="error" id="confirmPasswordError"></div>
+        </div>
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("registrationForm");
+        const username = document.getElementById("username");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const usernameError = document.getElementById("usernameError");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+        const confirmPasswordError = document.getElementById("confirmPasswordError");
+
+        form.addEventListener("submit", function (event) {
+            let valid = true;
+
+            
+            if (username.value.trim() === "") {
+                usernameError.textContent = "Username is required";
+                username.style.borderColor = "red";
+                valid = false;
+            } else {
+                usernameError.textContent = "";
+                username.style.borderColor = "lightgreen"; 
+            }
+
+            
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (email.value.trim() === "") {
+                emailError.textContent = "Email is required";
+                email.style.borderColor = "red";
+                valid = false;
+            } else if (!emailPattern.test(email.value)) {
+                emailError.textContent = "Invalid email format";
+                email.style.borderColor = "red";
+                valid = false;
+            } else {
+                emailError.textContent = "";
+                email.style.borderColor = "green"; 
+            }
+
+            
+            if (password.value.trim() === "") {
+                passwordError.textContent = "Password is required";
+                password.style.borderColor = "red";
+                valid = false;
+            } else if (password.value.length < 8) {
+                passwordError.textContent = "Password must be at least 8 characters long";
+                password.style.borderColor = "red";
+                valid = false;
+            } else {
+                passwordError.textContent = "";
+                password.style.borderColor = "green";
+            }
+
+            
+            if (confirmPassword.value.trim() === "") {
+                confirmPasswordError.textContent = "Confirm Password is required";
+                confirmPassword.style.borderColor = "red";
+                valid = false;
+            } else if (confirmPassword.value !== password.value) {
+                confirmPasswordError.textContent = "Passwords do not match";
+                confirmPassword.style.borderColor = "red";
+                valid = false;
+            } else {
+                confirmPasswordError.textContent = "";
+                confirmPassword.style.borderColor = "green"; s
+            }
+
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
