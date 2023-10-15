@@ -28,10 +28,11 @@
     </ul>
     </nav>
 
-    <!-- Banner Section -->
-    <section class="banner-container">
-      <img src="images/travel banner.svg" alt="Illustrative banner of travel destinations" class="centered-banner">
-    </section>
+    <!-- Replace the Banner Section with the slider -->
+      <section class="banner-container">
+        <img name="slide" alt="Alt goes here" title="Title goes here"
+        width="70%"/>
+      </section>
 
     <!-- Main Content Section -->
     <main class="services">
@@ -104,5 +105,40 @@
       <p>&copy; 2024 Wanderlust Voyages | Travel Agency. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    // Step 1: Declare a variable for the starting point.
+    let currentImageIndex = 0;
+
+    // Step 2: Declare an array to hold image paths.
+    const images = [
+        'images/Landscape1.png',
+        'images/Landscape2.png',
+        'images/Landscape3.png',
+        'images/Landscape4.png',
+        'images/Landscape5.png',
+        'images/Landscape6.png',
+        'images/Landscape7.png',
+        'images/Landscape8.png',
+        'images/Landscape9.png',
+    ];
+
+    // Step 3: Set the time interval in milliseconds.
+    const interval = 3000; // 3 seconds
+
+    // Step 5: Function to change the image source.
+    function changeImage() {
+        const image = document.getElementsByName('slide')[0];
+        image.src = images[currentImageIndex];
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    }
+
+    // Step 6: Run the function every x seconds.
+    setInterval(changeImage, interval);
+
+    // Step 7: Run the function when the page loads.
+    window.addEventListener('load', changeImage);
+</script>
+
 </body>
 </html>

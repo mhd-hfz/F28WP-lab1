@@ -258,6 +258,19 @@ arrows) */
         margin-bottom: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       }
+    
+      /* Add these styles to your CSS file or within a <style> tag */
+.banner-container {
+    text-align: center;
+}
+
+.image-slider img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* You can add more styles as needed to match your design */
+
       
       
       
