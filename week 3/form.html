@@ -2,56 +2,71 @@
 <html>
 <head>
     <title>Form Validation</title>
+     <!-- Link to an external CSS file for styling -->
     <link rel="stylesheet" type="text/css" href="form.css">
 </head>
 <body>
+     <!-- Start of the user registration form -->
     <form id="form">
         <h1>User Registration</h1>
-
+        
+        <!-- Input field for the username -->
         <div class="input-control">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username">
             <div class="error" id="usernameError"></div>
         </div>
 
+         <!-- Input field for the email -->
         <div class="input-control">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email">
             <div class="error" id="emailError"></div>
         </div>
 
+         <!-- Input field for the password -->
         <div class="input-control">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
             <div class="error" id="passwordError"></div>
         </div>
 
+        <!-- Input field to confirm the password -->
         <div class="input-control">
             <label for="confirmPassword">Confirm Password:</label>
             <input type="password" id="confirmPassword" name="confirmPassword">
             <div class="error" id="confirmPasswordError"></div>
         </div>
 
+        <!-- Button to submit the form (type="button" to handle validation in JavaScript) -->
         <button type="button" id="form button">Submit</button>
     </form>
 
+      <!-- JavaScript code for form validation -->
     <script>
+        // Get a reference to the form element with the "form" ID
         const form = document.getElementById("form");
 
         // Function to validate an input field and provide visual feedback
         function validateInput(input, error, regex) {
+
+             // Trim and get the value of the input field
             const value = input.value.trim();
+
+            // Check if the input is empty
             if (value === "") {
                 error.textContent = `${input.name} is required`;
                 input.classList.add("error-border");
                 input.classList.remove("success-border");
                 return false;
             } else if (regex && !regex.test(value)) {
+                 // Check if the input matches a regular expression (if provided)
                 error.textContent = `Invalid ${input.name}`;
                 input.classList.add("error-border");
                 input.classList.remove("success-border");
                 return false;
             } else {
+                // Input is valid
                 error.textContent = "";
                 input.classList.remove("error-border");
                 input.classList.add("success-border");
@@ -61,14 +76,20 @@
 
         // Validation on input fields when they lose focus
         document.querySelectorAll(".input-control input").forEach(input => {
+             // Get a reference to the error element associated with the input
             const error = input.nextElementSibling;
+
+             // Add a blur event listener to the input
             input.addEventListener("blur", () => {
                 let regex;
                 if (input.name === "email") {
+                     // Define a regular expression for email validation
                     regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
                 } else if (input.name === "password") {
+                    // Define a regular expression for password length validation
                     regex = /.{8,}/;
                 }
+                 // Validate the input with the defined regular expression
                 validateInput(input, error, regex);
             });
         });
@@ -77,19 +98,25 @@
         document.getElementById("submitBtn").addEventListener("click", function () {
             let valid = true;
 
+              // Iterate through all input fields for validation
             document.querySelectorAll(".input-control input").forEach(input => {
+                 // Get a reference to the error element associated with the input
                 const error = input.nextElementSibling;
                 let regex;
                 if (input.name === "email") {
+                     // Define a regular expression for email validation
                     regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
                 } else if (input.name === "password") {
+                    // Define a regular expression for password length validation
                     regex = /.{8,}/;
                 }
+                // Validate the input with the defined regular expression
                 if (!validateInput(input, error, regex)) {
                     valid = false;
                 }
             });
 
+              // Check if passwords match
             const password = document.getElementById("password");
             const confirmPassword = document.getElementById("confirmPassword");
             const confirmPasswordError = document.getElementById("confirmPasswordError");
@@ -105,8 +132,8 @@
                 confirmPassword.classList.add("success-border");
             }
 
-            if (valid) {
-                // Perform further actions when the form is valid
+             // If the form is valid, perform further actions (e.g., form submission)
+            if (valid) {}
                 alert("Form submitted successfully!");
             }
         });

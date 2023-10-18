@@ -107,8 +107,10 @@
   </div>
 
   <script>
+    // Initialize the image index to 0
     let imageIndex = 0;
 
+    // Define an array of image sources
     const images = [
         'images/Landscape1.png',
         'images/Landscape2.png',
@@ -121,16 +123,25 @@
         'images/Landscape9.png',
     ];
 
+    // Define the interval time for changing images (in milliseconds)
     const interval = 2000;
 
+    // Function to change the image displayed
     function changeImage() {
+        // Get the image element by name (assuming there's only one with the name 'slide')
         const image = document.getElementsByName('slide')[0];
+
+        // Set the source of the image element to the next image in the array
         image.src = images[imageIndex];
+
+        // Update the imageIndex to cycle through the images
         imageIndex = (imageIndex + 1) % images.length;
     }
 
+    // Set an interval to call the changeImage function at a regular interval
     setInterval(changeImage, interval);
 
+    // When the window loads, initially change the image (optional, for immediate display)
     window.addEventListener('load', changeImage);
 </script>
 </body>
