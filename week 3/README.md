@@ -10,7 +10,7 @@ Additionally, the changeImage function will be launched by an event listener onc
 
 Working of the form:
 
-The form includes various input fields for the user's information, such as username, email, password, and password confirmation. Each input field is contained within a <div> element with the class "input-control," making it easier to style and manage.
+The form includes various input fields for the user's information, such as username, email, password, and password confirmation. Each input field is contained within a div element with the class "input-control," making it easier to style and manage.
 The validateInput function is introduced, which serves as the core validation mechanism. This function takes an input field, an associated error message element, and an optional regular expression (regex) for validation purposes.
 validateInput first trims the input value to remove any leading or trailing spaces.
 It then checks if the trimmed value is empty (blank). If it is, it displays an error message in red to visually indicate an issue. When the input is valid (not empty and matching the regex), it clears the error message and adds a green border to signify a successful input.
