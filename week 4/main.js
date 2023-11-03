@@ -34,6 +34,10 @@ function renderHTML(data){
     }
     }
     htmlString += '.</p>';
+    
+    if(i == 1){
+        btn.classList.add("hide-me");
+    }
     }
     cityContainer.insertAdjacentHTML('beforeend' , htmlString);
     }
