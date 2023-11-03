@@ -1,14 +1,6 @@
-var myCities = [
-    {
-    "name": "Dubai",
-    "country": "UAE",
-    "place": "Dubai Mall"
-    },
-    {
-    "name": "Milan",
-    "country": "Italy",
-    "place": "Duomo Di Milano"
-    }
-    ];
-    
-    console.log(myCities[0].name);
+var ourRequest = new XMLHttpRequest();
+ourRequest.open('GET', 'https://mhd-hfz.github.io/F28WP-lab1/week%204/cities1.json');
+ourRequest.onload = function() {
+console.log(ourRequest.responseText);
+};
+ourRequest.send();
