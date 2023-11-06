@@ -31,9 +31,8 @@ btn.addEventListener('click', () => {
                 const windSpeed = data.wind.speed;
 
                 weatherInfo.innerHTML = `
-                    <p>Weather: ${weatherDescription}</p>
-                    <p>Temperature: ${temperature}°C</p>
-                    <p>Wind Speed: ${windSpeed} m/s</p>
+                    <p>The weather in ${city} is ${weatherDescription}.</p>
+                    <p>The temperature is ${temperature}°C with a wind speed of ${windSpeed} m/s.</p>
                 `;
             })
             .catch(error => {
