@@ -30,14 +30,24 @@ btn.addEventListener('click', () => {
                 const temperature = data.main.temp;
                 const windSpeed = data.wind.speed;
 
-                weatherInfo.innerHTML = `
+                // Create a new div element to contain the new search result
+                const newSearchResult = document.createElement('div');
+                newSearchResult.innerHTML = `
                     <p>The weather in ${city} is ${weatherDescription}.</p>
-                    <p>The temperature is ${temperature}°C with a wind speed of ${windSpeed} m/s.</p>
-                `;
+                    <p>The temperature is ${temperature}°C with a wind speed of ${windSpeed} m/s.</p>`;
+
+                // Add a horizontal line between old and new results
+                const horizontalLine = document.createElement('hr');
+
+                // Insert the line, new result, and previous content
+                weatherInfo.insertBefore(horizontalLine, weatherInfo.firstChild);
+                weatherInfo.insertBefore(newSearchResult, weatherInfo.firstChild);
             })
             .catch(error => {
                 // Step 6: Error handling
-                weatherInfo.innerHTML = `<p>Failed to fetch weather information</p>`;
+                const errorResult = document.createElement('div');
+                errorResult.innerHTML = `<p>Failed to fetch weather information for ${city}</p>`;
+
                 console.error('Error:', error);
             });
     }
