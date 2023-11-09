@@ -34,7 +34,8 @@ btn.addEventListener('click', () => {
                 const newSearchResult = document.createElement('div');
                 newSearchResult.innerHTML = `
                     <p>The weather in ${city} is ${weatherDescription}.</p>
-                    <p>The temperature is ${temperature}°C with a wind speed of ${windSpeed} m/s.</p>`;
+                    <p>The temperature is ${temperature}°C with a wind speed of ${windSpeed} m/s.</p>
+                `;
 
                 // Add a horizontal line between old and new results
                 const horizontalLine = document.createElement('hr');
@@ -48,6 +49,12 @@ btn.addEventListener('click', () => {
                 const errorResult = document.createElement('div');
                 errorResult.innerHTML = `<p>Failed to fetch weather information for ${city}</p>`;
 
+                // Add a horizontal line between old and new error message
+                const horizontalLine = document.createElement('hr');
+
+                // Insert the line, error message, and previous content
+                weatherInfo.insertBefore(horizontalLine, weatherInfo.firstChild);
+                weatherInfo.insertBefore(errorResult, weatherInfo.firstChild);
                 console.error('Error:', error);
             });
     }
