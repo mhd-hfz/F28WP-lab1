@@ -19,6 +19,9 @@ app.use(express.static(publicDirectory));
 
 app.set('view engine','hbs');
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 db.connect((error)=>{
     if(error){
         console.log(error)
@@ -26,11 +29,10 @@ db.connect((error)=>{
     else{
         console.log("MySql is Connected...")
     }
-})
-app.get("/",(req,res)=>{
-    // res.send('<h1>Home Page</h1>')
-    res.render("index")
 });
+
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
 app.listen(post,()=>{
     console.log(`Server started on port ${post}`)
