@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const mysql = require("mysql");
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 
 dotenv.config({path:"./.env" })
 const app = express();
@@ -20,7 +21,9 @@ app.use(express.static(publicDirectory));
 app.set('view engine','hbs');
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
+app.use(cookieParser());
+
 
 db.connect((error)=>{
     if(error){
@@ -33,6 +36,7 @@ db.connect((error)=>{
 
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
+
 
 app.listen(post,()=>{
     console.log(`Server started on port ${post}`)
